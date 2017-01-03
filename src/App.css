@@ -18,6 +18,19 @@
   font-size: large;
 }
 
+.Main-frame {
+	/* should be in the middle of the screen and should hold both of the markdown windows - the editor and the preview */
+	display: flex;
+}
+
+.Editor {
+	/* testing */
+}
+
+.Preview {
+
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
