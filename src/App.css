@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: Arial;
 }
 
 .App-logo {
@@ -21,14 +22,20 @@
 .Main-frame {
 	/* should be in the middle of the screen and should hold both of the markdown windows - the editor and the preview */
 	display: flex;
+	flex-direction: row;
+	/*align-items: center;*/
+	justify-content: space-around;
 }
 
 .Editor {
 	/* testing */
+	border: 1px solid black;
+	padding: 10px;
 }
 
 .Preview {
-
+	border: 1px solid black;
+	padding: 10px;
 }
 
 @keyframes App-logo-spin {

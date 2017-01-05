@@ -22,8 +22,7 @@ class App extends Component {
 class MainFrame extends Component {
 	render() {
 		return (
-			<div>
-				<p>Trying out putting one component into another</p>
+			<div className="Main-frame">
 				<Editor />
 				<Preview />
 			</div>
@@ -32,20 +31,64 @@ class MainFrame extends Component {
 }
 
 class Editor extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			defaultText:
+			`Heading
+			=======
+
+			Sub-heading
+			-----------
+
+			### Another deeper heading
+
+			Paragraphs are separated
+			by a blank line.
+
+			Leave 2 spaces at the end of a line to do a
+			line break
+
+			Text attributes *italic*, **bold**,
+			\`monospace\`, ~~strikethrough~~ .
+			`
+		}
+	}
+
+	onTextareaChange = () => {
+		// Load the
+		// based on the content of this table,
+	}
+
 	render() {
 		return (
-			<p>This is Editor</p>
+			<div className="Editor">
+				<p>This is Editor</p>
+				<textarea defaultValue={this.state.defaultText}></textarea>
+			</div>
+
 		);
 	}
 }
 
 class Preview extends Component {
+	changeBackgroundOnClick = () => {
+		alert("test has run successfully");
+	}
+
 	render() {
 		return (
-			<p>This is Preview</p>
+			<div className="Preview">
+				<p>This is Preview</p>
+				<button onClick={this.changeBackgroundOnClick}>Test</button>
+			</div>
+
 		);
 	}
+
 }
+
+
 
 
 
