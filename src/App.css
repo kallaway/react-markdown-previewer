@@ -5,12 +5,12 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  height: 40px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
   color: white;
 }
@@ -31,11 +31,19 @@
 	/* testing */
 	border: 1px solid black;
 	padding: 10px;
+	width: 45%;
+}
+
+.Editor textarea {
+	width: 95%;
+	height: 300px;
+	font-size: 1em;
 }
 
 .Preview {
 	border: 1px solid black;
 	padding: 10px;
+	width: 45%;
 }
 
 @keyframes App-logo-spin {

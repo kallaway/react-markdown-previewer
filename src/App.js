@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+var marked = require('marked');
+
 
 class App extends Component {
   render() {
@@ -56,15 +58,24 @@ class Editor extends Component {
 	}
 
 	onTextareaChange = () => {
+		console.log("text changed");
 		// Load the
 		// based on the content of this table,
+		var string = this.state.defaultText;
+		console.log(string);
+		// use the library Marked to parse Markdown
+		// marked(string)
+		console.log(marked(string));
+		// we need to somehow push the change of state into the preview component
+
+		// send it up to the parent and then push down to Preview?
 	}
 
 	render() {
 		return (
 			<div className="Editor">
 				<p>This is Editor</p>
-				<textarea defaultValue={this.state.defaultText}></textarea>
+				<textarea defaultValue={this.state.defaultText} onChange={this.onTextareaChange}></textarea>
 			</div>
 
 		);
