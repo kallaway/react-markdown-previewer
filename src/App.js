@@ -22,10 +22,18 @@ class App extends Component {
 }
 
 class MainFrame extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			defaultText: "Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading",
+			markupToBuild: ""
+		}
+	}
+
 	render() {
 		return (
 			<div className="Main-frame">
-				<Editor />
+				<Editor currentText={this.state.defaultText}/>
 				<Preview />
 			</div>
 		);
@@ -35,33 +43,37 @@ class MainFrame extends Component {
 class Editor extends Component {
 	constructor(props) {
 		super(props);
+		// this.test = "something";
 		this.state = {
-			defaultText:
-			`Heading
-			=======
-
-			Sub-heading
-			-----------
-
-			### Another deeper heading
-
-			Paragraphs are separated
-			by a blank line.
-
-			Leave 2 spaces at the end of a line to do a
-			line break
-
-			Text attributes *italic*, **bold**,
-			\`monospace\`, ~~strikethrough~~ .
-			`
+			text: "Testing this"
 		}
+		// this.state = {
+		// 	defaultText:
+		// 	`Heading
+		// 	=======
+		//
+		// 	Sub-heading
+		// 	-----------
+		//
+		// 	### Another deeper heading
+		//
+		// 	Paragraphs are separated
+		// 	by a blank line.
+		//
+		// 	Leave 2 spaces at the end of a line to do a
+		// 	line break
+		//
+		// 	Text attributes *italic*, **bold**,
+		// 	\`monospace\`, ~~strikethrough~~ .
+		// 	`
+		// }
 	}
 
 	onTextareaChange = () => {
 		console.log("text changed");
 		// Load the
 		// based on the content of this table,
-		var string = this.state.defaultText;
+		var string = this.state.text; //how to get the current text of a text area?
 		console.log(string);
 		// use the library Marked to parse Markdown
 		// marked(string)
@@ -75,7 +87,7 @@ class Editor extends Component {
 		return (
 			<div className="Editor">
 				<p>This is Editor</p>
-				<textarea defaultValue={this.state.defaultText} onChange={this.onTextareaChange}></textarea>
+				<textarea defaultValue={this.state.text} onChange={this.onTextareaChange}></textarea>
 			</div>
 
 		);
@@ -98,9 +110,5 @@ class Preview extends Component {
 	}
 
 }
-
-
-
-
 
 export default App;
