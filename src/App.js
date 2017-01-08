@@ -25,15 +25,23 @@ class MainFrame extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			defaultText: "Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading",
+			currentText: "Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading",
 			markupToBuild: ""
 		}
+	}
+
+	handleChange(changedText) {
+		// return changedText;
+		// received the changed text and updated the info. after changing the state - should the other component also be updated?
+		this.setState({
+			currentText: changedText
+		})
 	}
 
 	render() {
 		return (
 			<div className="Main-frame">
-				<Editor currentText={this.state.defaultText}/>
+				<Editor text={this.state.currentText} onChange={() => this.handleChange(changedText)}/>
 				<Preview />
 			</div>
 		);
@@ -87,7 +95,7 @@ class Editor extends Component {
 		return (
 			<div className="Editor">
 				<p>This is Editor</p>
-				<textarea defaultValue={this.state.text} onChange={this.onTextareaChange}></textarea>
+				<textarea defaultValue={this.state.text} onChange={this.props.onChange}></textarea>
 			</div>
 
 		);
