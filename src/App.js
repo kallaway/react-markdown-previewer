@@ -26,23 +26,27 @@ class MainFrame extends Component {
 		super(props);
 		this.state = {
 			currentText: "Heading\n=======\n\nSub-heading\n-----------\n\n### Another deeper heading",
-			markupToBuild: ""
+			currentMarkdown: ""
 		}
 	}
 
 	handleChange(changedText) {
 		// return changedText;
 		// received the changed text and updated the info. after changing the state - should the other component also be updated?
+		console.log("Handle change function gets called");
+		console.log("The text given to the function is: " + changedText);
+		var currentMarkdown = marked(changedText);
 		this.setState({
-			currentText: changedText
+			currentText: changedText,
+			currentMarkdown: currentMarkdown,
 		})
 	}
 
 	render() {
 		return (
 			<div className="Main-frame">
-				<Editor text={this.state.currentText} onChange={() => this.handleChange(changedText)}/>
-				<Preview />
+				<Editor text={this.state.currentText} onChange={(changedText) => this.handleChange(this.state.changedText)}/>
+				<Preview markdown={this.state.currentMarkdown}/>
 			</div>
 		);
 	}
@@ -110,8 +114,9 @@ class Preview extends Component {
 	render() {
 		return (
 			<div className="Preview">
+				<div>{this.props.currentMarkdown}</div>
 				<p>This is Preview</p>
-				<button onClick={this.changeBackgroundOnClick}>Test</button>
+				<button>Test</button>
 			</div>
 
 		);
