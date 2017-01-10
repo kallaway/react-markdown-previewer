@@ -31,26 +31,37 @@ class MainFrame extends Component {
 	}
 
 	handleChange(changedText) {
+		var textFromTextArea = document.getElementById("goal").value;
+		console.log("!!!" + textFromTextArea);
 		// return changedText;
 		// received the changed text and updated the info. after changing the state - should the other component also be updated?
 		console.log("Handle change function gets called");
 		console.log("The text given to the function is: " + changedText);
 		var currentMarkdown = marked(changedText);
 		this.setState({
-			currentText: changedText,
+			currentText: textFromTextArea,
 			currentMarkdown: currentMarkdown,
 		})
+
 	}
+	renderEditor(changedText) {
+		return <Editor text={this.state.currentText} onChange={() => this.handleChange(changedText)}/>
+	}
+
+	// here I probably should feed it the changed state
+
 
 	render() {
 		return (
 			<div className="Main-frame">
-				<Editor text={this.state.currentText} onChange={(changedText) => this.handleChange(this.state.changedText)}/>
+				{this.renderEditor(this.state.currentText)}
+
 				<Preview markdown={this.state.currentMarkdown}/>
 			</div>
 		);
 	}
 }
+// <Editor text={this.state.currentText} onChange={(changedText) => this.handleChange(changedText)}/>
 
 class Editor extends Component {
 	constructor(props) {
@@ -59,28 +70,7 @@ class Editor extends Component {
 		this.state = {
 			text: "Testing this"
 		}
-		// this.state = {
-		// 	defaultText:
-		// 	`Heading
-		// 	=======
-		//
-		// 	Sub-heading
-		// 	-----------
-		//
-		// 	### Another deeper heading
-		//
-		// 	Paragraphs are separated
-		// 	by a blank line.
-		//
-		// 	Leave 2 spaces at the end of a line to do a
-		// 	line break
-		//
-		// 	Text attributes *italic*, **bold**,
-		// 	\`monospace\`, ~~strikethrough~~ .
-		// 	`
-		// }
 	}
-
 	onTextareaChange = () => {
 		console.log("text changed");
 		// Load the
@@ -99,29 +89,25 @@ class Editor extends Component {
 		return (
 			<div className="Editor">
 				<p>This is Editor</p>
-				<textarea defaultValue={this.state.text} onChange={this.props.onChange}></textarea>
+				<textarea id="goal" defaultValue={this.state.text} onChange={this.props.onChange}></textarea>
 			</div>
-
 		);
 	}
 }
 
 class Preview extends Component {
-	changeBackgroundOnClick = () => {
-		alert("test has run successfully");
-	}
 
 	render() {
 		return (
 			<div className="Preview">
-				<div>{this.props.currentMarkdown}</div>
-				<p>This is Preview</p>
-				<button>Test</button>
+				{this.props.markdown}
+
 			</div>
 
 		);
 	}
-
+	// <p>This is Preview</p>
+	// <button>Test</button>
 }
 
 export default App;
