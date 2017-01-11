@@ -68,7 +68,37 @@ class Editor extends Component {
 		super(props);
 		// this.test = "something";
 		this.state = {
-			text: "Testing this"
+			text: `Heading
+=======
+
+Sub-heading
+-----------
+
+### Another deeper heading
+
+Paragraphs are separated
+by a blank line.
+
+Leave 2 spaces at the end of a line to do a
+line break
+
+Text attributes *italic*, **bold**,
+\`monospace\`, ~~strikethrough~~ .
+
+Shopping list:
+
+  * apples
+  * oranges
+  * pears
+
+Numbered list:
+
+  1. apples
+  2. oranges
+  3. pears
+
+The rain---not the reign---in
+Spain.`
 		}
 	}
 	onTextareaChange = () => {
@@ -99,8 +129,8 @@ class Preview extends Component {
 
 	render() {
 		return (
-			<div className="Preview">
-				{this.props.markdown}
+			<div className="Preview" dangerouslySetInnerHTML={{__html: this.props.markdown}}>
+				
 
 			</div>
 
