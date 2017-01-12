@@ -10,9 +10,13 @@
 
 .App-header {
   background-color: #222;
-  height: 100px;
+  height: 70px;
   padding: 20px;
   color: white;
+}
+
+.App-header h2 {
+	margin: 5px;
 }
 
 .App-intro {
@@ -21,29 +25,35 @@
 
 .Main-frame {
 	/* should be in the middle of the screen and should hold both of the markdown windows - the editor and the preview */
+	/*padding-top: 10px;*/
 	display: flex;
 	flex-direction: row;
-	/*align-items: center;*/
 	justify-content: space-around;
+	/*border-radius: 5%;*/
 }
 
 .Editor {
 	/* testing */
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 	padding: 10px;
 	width: 45%;
+	border-radius: 3px;
 }
 
 .Editor textarea {
 	width: 95%;
-	height: 300px;
-	font-size: 1em;
+	height: 430px;
+	font-size: 0.7em;
+	border-radius: 3px;
+	padding: 3px;
 }
 
 .Preview {
-	border: 1px solid black;
+	/*border: 1px solid black;*/
+	border-radius: 3px;
 	padding: 10px;
 	width: 45%;
+	text-align: left;
 }
 
 @keyframes App-logo-spin {
